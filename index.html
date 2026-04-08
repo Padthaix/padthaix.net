@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>67</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #000;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      cursor: none;
+    }
+    #num {
+      position: fixed;
+      font-family: Arial Black, sans-serif;
+      font-size: 40vw;
+      font-weight: 900;
+      color: #fff;
+      user-select: none;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      top: 50%;
+      left: 50%;
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+  <div id="num">67</div>
+  <video id="bg" src="music.mp4" autoplay loop muted playsinline style="display:none"></video>
+
+  <script>
+    const num = document.getElementById('num');
+    const video = document.getElementById('bg');
+
+    document.addEventListener('mousemove', (e) => {
+      num.style.left = e.clientX + 'px';
+      num.style.top = e.clientY + 'px';
+    });
+
+    document.addEventListener('click', () => {
+      video.muted = false;
+      video.play();
+    });
+
+    // try autoplay with sound on load
+    video.muted = false;
+    video.play().catch(() => {
+      video.muted = true;
+      video.play();
+    });
+  </script>
+</body>
+</html>
